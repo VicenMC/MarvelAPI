@@ -6,6 +6,7 @@ require("dotenv").config();
 //http://api.countrylayer.com/v2/all?access_key=e92fb250090460d9d89a034718115410
 
 module.exports = {
+  /*Get API Data*/
   askCharacters: () => {
     let obj = axios
       .get(
@@ -160,10 +161,10 @@ module.exports = {
       });
     return obj;
   },
-  askStories: () => {
+  askStories: (page) => {
     let obj = axios
       .get(
-        `https://gateway.marvel.com/v1/public/stories?offset=0&${process.env.REACT_APP_MARVELURL}`
+        `https://gateway.marvel.com/v1/public/stories?offset=${page}&${process.env.REACT_APP_MARVELURL}`
       )
       .then((resultado) => (resultado = resultado.data))
       .then((resultado) => (resultado = resultado.data))
@@ -190,4 +191,5 @@ module.exports = {
       });
     return obj;
   },
+  /*Search specific information*/
 };
